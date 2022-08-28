@@ -3,11 +3,7 @@ package com.bots.RacoonShared.Events.IncomingDataEvents;
 import org.json.JSONObject;
 
 public abstract class BaseIncomingDataTrafficHandler implements IncomingDataTrafficHandler {
-    private IncomingDataTrafficHandler next = null;
-
-    public BaseIncomingDataTrafficHandler() {
-
-    }
+    private IncomingDataTrafficHandler next;
 
     public BaseIncomingDataTrafficHandler(IncomingDataTrafficHandler next) {
         this.next = next;
