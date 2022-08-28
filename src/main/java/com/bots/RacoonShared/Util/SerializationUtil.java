@@ -1,4 +1,4 @@
-package com.bots.RacoonShared.Logging.Util;
+package com.bots.RacoonShared.Util;
 
 import java.io.*;
 import java.util.Base64;
