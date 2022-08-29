@@ -22,7 +22,7 @@ public class SocketCommunicationOperation {
         this.request = request;
     }
 
-    public boolean isWaitForResponse() {
+    public boolean waitForResponse() {
         return waitForResponse;
     }
 
