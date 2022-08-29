@@ -15,8 +15,8 @@ public abstract class BaseIncomingDataTrafficHandler implements IncomingDataTraf
     }
 
     @Override
-    public void handle(JSONObject response) {
+    public void handle(JSONObject data) {
         if (next != null)
-            next.handle(response);
+            next.handle(data);
     }
 }

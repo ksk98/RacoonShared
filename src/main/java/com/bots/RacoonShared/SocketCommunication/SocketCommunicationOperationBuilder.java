@@ -1,6 +1,5 @@
 package com.bots.RacoonShared.SocketCommunication;
 
-import com.bots.RacoonShared.Logging.Loggers.Logger;
 import org.json.JSONObject;
 
 import java.util.function.Consumer;
@@ -9,43 +8,43 @@ import java.util.function.Consumer;
  * Builder class for SocketCommunicationOperation.
  */
 public class SocketCommunicationOperationBuilder {
-    private JSONObject request;
-    private Consumer<JSONObject> onResponse;
-    private Consumer<String> onError;
+    private JSONObject data;
+    private Consumer<JSONObject> onResponseReceived;
+    private Consumer<String> onErrorEncountered;
 
     public SocketCommunicationOperationBuilder() {
         clear();
     }
 
-    public SocketCommunicationOperationBuilder setRequest(JSONObject request) {
-        this.request = request;
+    public SocketCommunicationOperationBuilder setData(JSONObject data) {
+        this.data = data;
         return this;
     }
 
-    public SocketCommunicationOperationBuilder setOnResponse(Consumer<JSONObject> onResponse) {
-        this.onResponse = onResponse;
+    public SocketCommunicationOperationBuilder setOnResponseReceived(Consumer<JSONObject> onResponseReceived) {
+        this.onResponseReceived = onResponseReceived;
         return this;
     }
 
-    public SocketCommunicationOperationBuilder setOnError(Consumer<String> onError) {
-        this.onError = onError;
+    public SocketCommunicationOperationBuilder setOnErrorEncountered(Consumer<String> onErrorEncountered) {
+        this.onErrorEncountered = onErrorEncountered;
         return this;
     }
 
     public SocketCommunicationOperation build() {
         SocketCommunicationOperation out = new SocketCommunicationOperation();
 
-        if (request == null)
+        if (data == null)
             out.setRequest(new JSONObject());
-        out.setOnError(onError);
-        out.setOnResponse(onResponse);
+        out.setOnErrorEncountered(onErrorEncountered);
+        out.setOnResponseReceived(onResponseReceived);
 
         return out;
     }
 
     public void clear() {
-        this.request = null;
-        this.onResponse = response -> {};
-        this.onError = errorMessage -> {};
+        this.data = null;
+        this.onResponseReceived = response -> {};
+        this.onErrorEncountered = errorMessage -> {};
     }
 }

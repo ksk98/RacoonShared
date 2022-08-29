@@ -5,14 +5,12 @@ import org.json.JSONObject;
 import java.util.function.Consumer;
 
 /***
- * Resembles a single operation related to sending a request.
- * Given consumers will be used during the lifecycle of a request either
- * when response is available or an error occured.
+ * Resembles a single operation related to sending data.
  */
 public class SocketCommunicationOperation {
     private JSONObject request = null;
-    private Consumer<JSONObject> onResponse = response -> {};
-    private Consumer<String> onError = errorMessage -> {};
+    private Consumer<JSONObject> onResponseReceived = response -> {};
+    private Consumer<String> onErrorEncountered = errorMessage -> {};
 
 
     public JSONObject getRequest() {
@@ -23,19 +21,19 @@ public class SocketCommunicationOperation {
         this.request = request;
     }
 
-    public Consumer<JSONObject> getOnResponse() {
-        return onResponse;
+    public Consumer<JSONObject> getOnResponseReceived() {
+        return onResponseReceived;
     }
 
-    public void setOnResponse(Consumer<JSONObject> onResponse) {
-        this.onResponse = onResponse;
+    public void setOnResponseReceived(Consumer<JSONObject> onResponseReceived) {
+        this.onResponseReceived = onResponseReceived;
     }
 
-    public Consumer<String> getOnError() {
-        return onError;
+    public Consumer<String> getOnErrorEncountered() {
+        return onErrorEncountered;
     }
 
-    public void setOnError(Consumer<String> onError) {
-        this.onError = onError;
+    public void setOnErrorEncountered(Consumer<String> onErrorEncountered) {
+        this.onErrorEncountered = onErrorEncountered;
     }
 }
