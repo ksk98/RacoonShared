@@ -9,6 +9,7 @@ import java.util.function.Consumer;
  */
 public class SocketCommunicationOperationBuilder {
     private JSONObject data;
+    private boolean waitForResponse;
     private Consumer<JSONObject> onResponseReceived;
     private Consumer<String> onErrorEncountered;
 
@@ -18,6 +19,11 @@ public class SocketCommunicationOperationBuilder {
 
     public SocketCommunicationOperationBuilder setData(JSONObject data) {
         this.data = data;
+        return this;
+    }
+
+    public SocketCommunicationOperationBuilder setWaitForResponse(boolean waitForResponse) {
+        this.waitForResponse = waitForResponse;
         return this;
     }
 
@@ -36,6 +42,7 @@ public class SocketCommunicationOperationBuilder {
 
         if (data == null)
             out.setRequest(new JSONObject());
+        out.setWaitForResponse(waitForResponse);
         out.setOnErrorEncountered(onErrorEncountered);
         out.setOnResponseReceived(onResponseReceived);
 
@@ -44,6 +51,7 @@ public class SocketCommunicationOperationBuilder {
 
     public void clear() {
         this.data = null;
+        this.waitForResponse = true;
         this.onResponseReceived = response -> {};
         this.onErrorEncountered = errorMessage -> {};
     }
