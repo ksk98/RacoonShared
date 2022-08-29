@@ -9,14 +9,11 @@ import java.util.function.Consumer;
  * Builder class for SocketCommunicationOperation.
  */
 public class SocketCommunicationOperationBuilder {
-    private final Logger logger;
-
     private JSONObject request;
     private Consumer<JSONObject> onResponse;
     private Consumer<String> onError;
 
-    public SocketCommunicationOperationBuilder(Logger logger) {
-        this.logger = logger;
+    public SocketCommunicationOperationBuilder() {
         clear();
     }
 
