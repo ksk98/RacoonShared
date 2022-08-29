@@ -1,4 +1,4 @@
-package com.bots.RacoonShared.Events.IncomingDataEvents;
+package com.bots.RacoonShared.IncomingDataHandlers;
 
 import org.json.JSONObject;
 
