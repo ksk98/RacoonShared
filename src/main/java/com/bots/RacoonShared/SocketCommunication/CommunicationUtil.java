@@ -27,7 +27,7 @@ public abstract class CommunicationUtil {
         StringBuilder stringBuilder = new StringBuilder();
         int endReadingStage = 0;
         while (endReadingStage < 4) {
-            char c = in.readChar();
+            int c = in.readByte();
             if ((endReadingStage == 0 || endReadingStage == 2) && c == '\r')
                 endReadingStage += 1;
             else if ((endReadingStage == 1 || endReadingStage == 3) && c == '\n')
@@ -35,7 +35,7 @@ public abstract class CommunicationUtil {
             else
                 endReadingStage = 0;
 
-            stringBuilder.append(c);
+            stringBuilder.append((char)c);
         }
 
         return stringBuilder.toString();
