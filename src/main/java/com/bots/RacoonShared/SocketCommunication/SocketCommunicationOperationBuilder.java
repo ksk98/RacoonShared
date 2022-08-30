@@ -2,6 +2,7 @@ package com.bots.RacoonShared.SocketCommunication;
 
 import org.json.JSONObject;
 
+import java.util.Objects;
 import java.util.function.Consumer;
 
 /***
@@ -40,8 +41,8 @@ public class SocketCommunicationOperationBuilder {
     public SocketCommunicationOperation build() {
         SocketCommunicationOperation out = new SocketCommunicationOperation();
 
-        if (data == null)
-            out.setRequest(new JSONObject());
+        out.setRequest(Objects.requireNonNullElseGet(data, JSONObject::new));
+
         out.setWaitForResponse(waitForResponse);
         out.setOnErrorEncountered(onErrorEncountered);
         out.setOnResponseReceived(onResponseReceived);
