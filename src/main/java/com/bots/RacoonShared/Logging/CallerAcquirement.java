@@ -7,8 +7,9 @@ import com.bots.RacoonShared.Logging.Loggers.LoggerBase;
  * Used to acquire name of the class or method calling the code.
  */
 public class CallerAcquirement {
+    private final int baseDepth = 2;
     private static CallerAcquirement instance = null;
-    private Logger logger = new LoggerBase() {
+    private Logger logger = new LoggerBase(0) {
         @Override
         public void log(Log log) {
             System.out.println(log);
@@ -27,12 +28,12 @@ public class CallerAcquirement {
     }
 
     public String getMethodName() {
-        return getMethodName(3);
+        return getMethodName(baseDepth + 1);
     }
 
-    public String getMethodName(int depth) {
+    public String getMethodName(int additionalDepth) {
         try {
-            return Thread.currentThread().getStackTrace()[depth].getMethodName();
+            return Thread.currentThread().getStackTrace()[additionalDepth + baseDepth].getMethodName();
         } catch (ArrayIndexOutOfBoundsException e) {
             logger.logError(getClassName() + " received an empty stack trace array when trying to get a method name.");
         }
@@ -41,12 +42,12 @@ public class CallerAcquirement {
     }
 
     public String getClassName() {
-        return getClassName(3);
+        return getClassName(baseDepth + 1);
     }
 
-    public String getClassName(int depth) {
+    public String getClassName(int additionalDepth) {
         try {
-            return Thread.currentThread().getStackTrace()[depth].getClassName();
+            return Thread.currentThread().getStackTrace()[additionalDepth + baseDepth].getClassName();
         } catch (ArrayIndexOutOfBoundsException e) {
             logger.logError("Utility class received an empty stack trace array when trying to get a class name.");
         }

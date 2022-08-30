@@ -4,12 +4,12 @@ import java.awt.*;
 import java.io.Serializable;
 
 public class Log implements Serializable {
-    private final String caller;
-    private final String message;
-    private final Color color;
+    public final String caller;
+    public final String message;
+    public final Color color;
 
-    public Log(String message, Color color) {
-        this.caller = CallerAcquirement.getInstance().getClassName();
+    public Log(int callerDepth, String message, Color color) {
+        this.caller = CallerAcquirement.getInstance().getClassName(callerDepth);
         this.message = message;
         this.color = color;
     }
@@ -18,18 +18,6 @@ public class Log implements Serializable {
         this.caller = caller;
         this.message = message;
         this.color = color;
-    }
-
-    public String getCaller() {
-        return caller;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public Color getColor() {
-        return color;
     }
 
     @Override
