@@ -7,9 +7,8 @@ import com.bots.RacoonShared.Logging.Loggers.LoggerBase;
  * Used to acquire name of the class or method calling the code.
  */
 public class CallerAcquirement {
-    private final int baseDepth = 2;
     private static CallerAcquirement instance = null;
-    private Logger logger = new LoggerBase(0) {
+    private Logger logger = new LoggerBase() {
         @Override
         public void log(Log log) {
             System.out.println(log);
@@ -27,29 +26,24 @@ public class CallerAcquirement {
         return instance;
     }
 
-    public String getMethodName() {
-        return getMethodName(baseDepth + 1);
-    }
-
-    public String getMethodName(int additionalDepth) {
-        try {
-            return Thread.currentThread().getStackTrace()[additionalDepth + baseDepth].getMethodName();
-        } catch (ArrayIndexOutOfBoundsException e) {
-            logger.logError(getClassName() + " received an empty stack trace array when trying to get a method name.");
-        }
-
-        return "???";
-    }
-
-    public String getClassName() {
-        return getClassName(baseDepth + 1);
-    }
-
-    public String getClassName(int additionalDepth) {
-        try {
-            return Thread.currentThread().getStackTrace()[additionalDepth + baseDepth].getClassName();
-        } catch (ArrayIndexOutOfBoundsException e) {
-            logger.logError("Utility class received an empty stack trace array when trying to get a class name.");
+    public String getClassName(int depth) {
+        StackTraceElement[] stackTrace = new Throwable().getStackTrace();
+        if (stackTrace.length == 0) {
+            logger.log(new Log(
+                    getClass().getCanonicalName() + ": " + getClass().getEnclosingMethod().getName(),
+                    "Received an empty stack trace array when trying to dig for a caller class name.",
+                    Logger.COLOR_ERROR)
+            );
+        } else {
+            try {
+                return Thread.currentThread().getStackTrace()[depth + 2].getClassName();
+            } catch (ArrayIndexOutOfBoundsException e) {
+                logger.log(new Log(
+                        getClass().getCanonicalName() + ": " + getClass().getEnclosingMethod().getName(),
+                        "Depth of " + depth + " was too deep for current stack trace.",
+                        Logger.COLOR_ERROR)
+                );
+            }
         }
 
         return "???";
