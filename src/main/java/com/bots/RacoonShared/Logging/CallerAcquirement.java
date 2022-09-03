@@ -1,5 +1,6 @@
 package com.bots.RacoonShared.Logging;
 
+import com.bots.RacoonShared.Logging.Exceptions.LogException;
 import com.bots.RacoonShared.Logging.Loggers.Logger;
 import com.bots.RacoonShared.Logging.Loggers.LoggerBase;
 
@@ -10,8 +11,13 @@ public class CallerAcquirement {
     private static CallerAcquirement instance = null;
     private Logger logger = new LoggerBase() {
         @Override
-        public void log(Log log) {
-            System.out.println(log);
+        public void fallbackLog(Log log, String error) {
+
+        }
+
+        @Override
+        public void displayLog(Log log) throws LogException {
+            System.out.println(log.toString());
         }
     };
 
@@ -29,19 +35,17 @@ public class CallerAcquirement {
     public String getClassName(int depth) {
         StackTraceElement[] stackTrace = new Throwable().getStackTrace();
         if (stackTrace.length == 0) {
-            logger.log(new Log(
+            logger.logError(
                     getClass().getCanonicalName() + ": " + getClass().getEnclosingMethod().getName(),
-                    "Received an empty stack trace array when trying to dig for a caller class name.",
-                    Logger.COLOR_ERROR)
+                    "Received an empty stack trace array when trying to dig for a caller class name."
             );
         } else {
             try {
                 return Thread.currentThread().getStackTrace()[depth + 2].getClassName();
             } catch (ArrayIndexOutOfBoundsException e) {
-                logger.log(new Log(
+                logger.logError(
                         getClass().getCanonicalName() + ": " + getClass().getEnclosingMethod().getName(),
-                        "Depth of " + depth + " was too deep for current stack trace.",
-                        Logger.COLOR_ERROR)
+                        "Depth of " + depth + " was too deep for current stack trace."
                 );
             }
         }
