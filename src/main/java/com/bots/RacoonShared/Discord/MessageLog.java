@@ -27,7 +27,7 @@ public class MessageLog {
         return this;
     }
 
-    public boolean isHasEmbeds() {
+    public boolean hasEmbeds() {
         return hasEmbeds;
     }
 
