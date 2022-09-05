@@ -1,8 +1,9 @@
 package com.bots.RacoonShared.Discord;
 
 import java.awt.*;
+import java.io.Serializable;
 
-public class MessageLog {
+public class MessageLog implements Serializable {
     public final String serverId, channelId;
     public final String username;
     public final Color userColor;
