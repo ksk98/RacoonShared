@@ -3,7 +3,10 @@ package com.bots.RacoonShared.IncomingDataHandlers;
 import org.json.JSONObject;
 
 public interface IncomingDataTrafficHandler {
-    void setNext(IncomingDataTrafficHandler handler);
+    /**
+     * @return handler that was passed as parameter
+     */
+    IncomingDataTrafficHandler setNext(IncomingDataTrafficHandler handler);
 
     /**
      * Handle given data or pass it to the next available handler.

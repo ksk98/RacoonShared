@@ -5,13 +5,14 @@ import org.json.JSONObject;
 public abstract class BaseIncomingDataTrafficHandler implements IncomingDataTrafficHandler {
     private IncomingDataTrafficHandler next;
 
-    public BaseIncomingDataTrafficHandler(IncomingDataTrafficHandler next) {
-        this.next = next;
+    public BaseIncomingDataTrafficHandler() {
+        this.next = null;
     }
 
     @Override
-    public void setNext(IncomingDataTrafficHandler handler) {
+    public IncomingDataTrafficHandler setNext(IncomingDataTrafficHandler handler) {
         this.next = handler;
+        return handler;
     }
 
     @Override
