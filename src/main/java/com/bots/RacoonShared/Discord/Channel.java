@@ -1,6 +1,8 @@
 package com.bots.RacoonShared.Discord;
 
-public record Channel(String channelId, String channelName) {
+import java.io.Serializable;
+
+public record Channel(String channelId, String channelName) implements Serializable {
     @Override
     public String toString() {
         return channelName;

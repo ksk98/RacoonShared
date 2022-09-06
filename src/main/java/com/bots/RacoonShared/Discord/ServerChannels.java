@@ -1,8 +1,9 @@
 package com.bots.RacoonShared.Discord;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class ServerChannels {
+public class ServerChannels implements Serializable {
     public final String serverId;
     public final String serverName;
     public final List<Channel> channels;
