@@ -2,21 +2,18 @@ package com.bots.RacoonShared.SocketCommunication;
 
 import org.json.JSONObject;
 
+import java.io.BufferedWriter;
 import java.io.DataInputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 public abstract class CommunicationUtil {
     /***
      * Use given PrintWriter to send given data.
-     * @throws IOException if PrintWriter has encountered an error
+     * @throws IOException if BufferedWriter has encountered an error
      */
-    public static void sendTo(PrintWriter out, JSONObject object) throws IOException {
-        out.print(object + "\r\n\r\n");
+    public static void sendTo(BufferedWriter out, JSONObject object) throws IOException {
+        out.write(object + "\r\n\r\n");
         out.flush();
-
-        if (out.checkError())
-            throw new IOException("An error was caught by the given PrintWriter instance.");
     }
 
     /***
