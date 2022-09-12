@@ -1,7 +1,6 @@
-package com.bots.RacoonShared.Logging.Loggers;
+package com.bots.RaccoonShared.Logging.Loggers;
 
-import com.bots.RacoonShared.Logging.Exceptions.LogException;
-import com.bots.RacoonShared.Logging.Log;
+import com.bots.RaccoonShared.Logging.Log;
 
 import java.awt.*;
 

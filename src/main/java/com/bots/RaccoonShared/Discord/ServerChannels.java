@@ -1,4 +1,4 @@
-package com.bots.RacoonShared.Discord;
+package com.bots.RaccoonShared.Discord;
 
 import java.io.Serializable;
 import java.util.List;

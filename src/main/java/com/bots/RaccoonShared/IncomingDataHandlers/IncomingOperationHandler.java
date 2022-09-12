@@ -1,6 +1,6 @@
-package com.bots.RacoonShared.IncomingDataHandlers;
+package com.bots.RaccoonShared.IncomingDataHandlers;
 
-import com.bots.RacoonShared.SocketCommunication.SocketOperationIdentifiers;
+import com.bots.RaccoonShared.SocketCommunication.SocketOperationIdentifiers;
 import org.json.JSONObject;
 
 public abstract class IncomingOperationHandler extends BaseIncomingDataTrafficHandler {

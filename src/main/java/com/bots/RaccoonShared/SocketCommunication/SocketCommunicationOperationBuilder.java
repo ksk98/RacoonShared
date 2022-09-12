@@ -1,4 +1,4 @@
-package com.bots.RacoonShared.SocketCommunication;
+package com.bots.RaccoonShared.SocketCommunication;
 
 import org.json.JSONObject;
 

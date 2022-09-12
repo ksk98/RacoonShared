@@ -1,4 +1,4 @@
-package com.bots.RacoonShared.Logging;
+package com.bots.RaccoonShared.Logging;
 
 import java.awt.*;
 import java.io.Serializable;

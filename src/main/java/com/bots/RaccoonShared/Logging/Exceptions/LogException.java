@@ -1,4 +1,4 @@
-package com.bots.RacoonShared.Logging.Exceptions;
+package com.bots.RaccoonShared.Logging.Exceptions;
 
 import java.io.IOException;
 

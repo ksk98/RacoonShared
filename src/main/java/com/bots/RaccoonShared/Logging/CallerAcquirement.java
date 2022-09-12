@@ -1,8 +1,8 @@
-package com.bots.RacoonShared.Logging;
+package com.bots.RaccoonShared.Logging;
 
-import com.bots.RacoonShared.Logging.Exceptions.LogException;
-import com.bots.RacoonShared.Logging.Loggers.Logger;
-import com.bots.RacoonShared.Logging.Loggers.LoggerBase;
+import com.bots.RaccoonShared.Logging.Exceptions.LogException;
+import com.bots.RaccoonShared.Logging.Loggers.Logger;
+import com.bots.RaccoonShared.Logging.Loggers.LoggerBase;
 
 /***
  * Used to acquire name of the class or method calling the code.
