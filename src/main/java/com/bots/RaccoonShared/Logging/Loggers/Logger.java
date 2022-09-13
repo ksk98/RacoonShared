@@ -1,45 +1,52 @@
 package com.bots.RaccoonShared.Logging.Loggers;
 
+import com.bots.RaccoonShared.Logging.Exceptions.LogException;
 import com.bots.RaccoonShared.Logging.Log;
 
-import java.awt.*;
-
 /***
- * Displays program logs.
+ * Base implementation of Logger interface.
  */
-public interface Logger {
-    Color COLOR_DEFAULT = Color.BLACK;
-    Color COLOR_ERROR = new Color(252, 31, 31);
-    Color COLOR_SUCCESS = new Color(47, 213, 24);
-    Color COLOR_INFO = new Color(31, 142, 252);
+public abstract class Logger implements ILogger {
+    /***
+     * Handle a log that couldn't be handled with primary method with a fallback method.
+     * @param log log to handle
+     * @param error error that occurred during primary handling of log
+     */
+    protected abstract void fallbackLog(Log log, String error);
 
     /***
-     * Display a given log.
+     * Log display implementation method.
+     * @param log log to display
+     * @throws LogException when log could not be displayed with primary method
      */
-    void log(Log log);
+    protected abstract void displayLog(Log log) throws LogException;
 
-    /***
-     * Create and display a log consisting of a given message, a caller determined by context and a black font color.
-     * @param message - displayed message
-     */
-    void log(String caller, String message);
+    @Override
+    public final void log(Log log) {
+        try {
+            displayLog(log);
+        } catch (LogException e) {
+            fallbackLog(log, e.toString());
+        }
+    }
 
-    /***
-     * Create and display a log consisting of a given message, a caller determined by context and a red font color.
-     * @param message - displayed message
-     */
-    void logError(String caller, String message);
+    @Override
+    public void log(String caller, String message) {
+        log(new Log(caller, message, COLOR_DEFAULT));
+    }
 
-    /***
-     * Create and display a log consisting of a given message, a caller determined by context and a green font color.
-     * @param message - displayed message
-     */
-    void logSuccess(String caller, String message);
+    @Override
+    public void logError(String caller, String message) {
+        log(new Log(caller, message, COLOR_ERROR));
+    }
 
-    /***
-     * Create and display a log consisting of a given message, a caller determined by context and a blue font color.
-     * @param message - displayed message
-     */
-    void logInfo(String caller, String message);
+    @Override
+    public void logSuccess(String caller, String message) {
+        log(new Log(caller, message, COLOR_SUCCESS));
+    }
+
+    @Override
+    public void logInfo(String caller, String message) {
+        log(new Log(caller, message, COLOR_INFO));
+    }
 }
-

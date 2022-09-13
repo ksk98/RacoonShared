@@ -2,15 +2,15 @@ package com.bots.RaccoonShared.IncomingDataHandlers;
 
 import org.json.JSONObject;
 
-public abstract class BaseIncomingDataTrafficHandler implements IncomingDataTrafficHandler {
-    private IncomingDataTrafficHandler next;
+public abstract class JSONDataHandler implements IJSONDataHandler {
+    private IJSONDataHandler next;
 
-    public BaseIncomingDataTrafficHandler() {
+    public JSONDataHandler() {
         this.next = null;
     }
 
     @Override
-    public IncomingDataTrafficHandler setNext(IncomingDataTrafficHandler handler) {
+    public IJSONDataHandler setNext(IJSONDataHandler handler) {
         this.next = handler;
         return handler;
     }

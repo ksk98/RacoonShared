@@ -3,10 +3,10 @@ package com.bots.RaccoonShared.IncomingDataHandlers;
 import com.bots.RaccoonShared.SocketCommunication.SocketOperationIdentifiers;
 import org.json.JSONObject;
 
-public abstract class IncomingOperationHandler extends BaseIncomingDataTrafficHandler {
+public abstract class JSONOperationHandler extends JSONDataHandler {
     private final SocketOperationIdentifiers operation;
 
-    public IncomingOperationHandler(SocketOperationIdentifiers operation) {
+    public JSONOperationHandler(SocketOperationIdentifiers operation) {
         super();
         this.operation = operation;
     }

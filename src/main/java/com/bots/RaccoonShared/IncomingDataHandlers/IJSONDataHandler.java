@@ -2,11 +2,11 @@ package com.bots.RaccoonShared.IncomingDataHandlers;
 
 import org.json.JSONObject;
 
-public interface IncomingDataTrafficHandler {
+public interface IJSONDataHandler {
     /**
      * @return handler that was passed as parameter
      */
-    IncomingDataTrafficHandler setNext(IncomingDataTrafficHandler handler);
+    IJSONDataHandler setNext(IJSONDataHandler handler);
 
     /**
      * Handle given data or pass it to the next available handler.
