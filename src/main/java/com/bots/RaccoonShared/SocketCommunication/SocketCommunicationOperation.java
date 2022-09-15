@@ -8,18 +8,18 @@ import java.util.function.Consumer;
  * Resembles a single operation related to sending data.
  */
 public class SocketCommunicationOperation {
-    private JSONObject request = null;
-    private boolean waitForResponse = true;
+    private JSONObject content = null;
+    private boolean waitForResponse = false;
     private Consumer<JSONObject> onResponseReceived = response -> {};
     private Consumer<String> onErrorEncountered = errorMessage -> {};
 
 
-    public JSONObject getRequest() {
-        return request;
+    public JSONObject getContent() {
+        return content;
     }
 
-    public void setRequest(JSONObject request) {
-        this.request = request;
+    public void setContent(JSONObject content) {
+        this.content = content;
     }
 
     public boolean waitForResponse() {
@@ -36,6 +36,7 @@ public class SocketCommunicationOperation {
 
     public void setOnResponseReceived(Consumer<JSONObject> onResponseReceived) {
         this.onResponseReceived = onResponseReceived;
+        this.waitForResponse = true;
     }
 
     public Consumer<String> getOnErrorEncountered() {
@@ -44,5 +45,6 @@ public class SocketCommunicationOperation {
 
     public void setOnErrorEncountered(Consumer<String> onErrorEncountered) {
         this.onErrorEncountered = onErrorEncountered;
+        this.waitForResponse = true;
     }
 }

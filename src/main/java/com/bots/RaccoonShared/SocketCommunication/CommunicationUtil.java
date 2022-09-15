@@ -8,7 +8,7 @@ import java.io.IOException;
 
 public abstract class CommunicationUtil {
     /***
-     * Use given PrintWriter to send given data.
+     * Use given BufferedWriter to send given data.
      * @throws IOException if BufferedWriter has encountered an error
      */
     public static void sendTo(BufferedWriter out, JSONObject object) throws IOException {

@@ -41,7 +41,7 @@ public class SocketCommunicationOperationBuilder {
     public SocketCommunicationOperation build() {
         SocketCommunicationOperation out = new SocketCommunicationOperation();
 
-        out.setRequest(Objects.requireNonNullElseGet(data, JSONObject::new));
+        out.setContent(Objects.requireNonNullElseGet(data, JSONObject::new));
 
         out.setWaitForResponse(waitForResponse);
         out.setOnErrorEncountered(onErrorEncountered);
@@ -52,7 +52,7 @@ public class SocketCommunicationOperationBuilder {
 
     public void clear() {
         this.data = null;
-        this.waitForResponse = true;
+        this.waitForResponse = false;
         this.onResponseReceived = response -> {};
         this.onErrorEncountered = errorMessage -> {};
     }
