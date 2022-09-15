@@ -30,11 +30,13 @@ public class SocketCommunicationOperationBuilder {
 
     public SocketCommunicationOperationBuilder setOnResponseReceived(Consumer<JSONObject> onResponseReceived) {
         this.onResponseReceived = onResponseReceived;
+        this.waitForResponse = true;
         return this;
     }
 
     public SocketCommunicationOperationBuilder setOnErrorEncountered(Consumer<String> onErrorEncountered) {
         this.onErrorEncountered = onErrorEncountered;
+        this.waitForResponse = true;
         return this;
     }
 

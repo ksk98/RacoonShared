@@ -36,7 +36,6 @@ public class SocketCommunicationOperation {
 
     public void setOnResponseReceived(Consumer<JSONObject> onResponseReceived) {
         this.onResponseReceived = onResponseReceived;
-        this.waitForResponse = true;
     }
 
     public Consumer<String> getOnErrorEncountered() {
@@ -45,6 +44,5 @@ public class SocketCommunicationOperation {
 
     public void setOnErrorEncountered(Consumer<String> onErrorEncountered) {
         this.onErrorEncountered = onErrorEncountered;
-        this.waitForResponse = true;
     }
 }
