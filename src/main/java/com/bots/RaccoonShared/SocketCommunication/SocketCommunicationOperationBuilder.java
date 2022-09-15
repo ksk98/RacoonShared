@@ -36,7 +36,6 @@ public class SocketCommunicationOperationBuilder {
 
     public SocketCommunicationOperationBuilder setOnErrorEncountered(Consumer<String> onErrorEncountered) {
         this.onErrorEncountered = onErrorEncountered;
-        this.waitForResponse = true;
         return this;
     }
 
