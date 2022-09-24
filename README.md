@@ -1,7 +1,5 @@
 # RaccoonTheThird
-**This project is work in progress, everything is subject to change!**
-
-Raccoon The Third is a scalable Discord bot platform that I'm developing for personal use.
+Raccoon The Third is a scalable Discord bot application that I have developed for personal use. This is a public, base version of the application which I use as a base for the bot that works on my Discord server. This project consists of 3 repositories:
 
 This project consists of 3 repositories:
 - [Server](https://github.com/ksk98/RaccoonTheThird "Raccoon server") used to host the dockerized bot
