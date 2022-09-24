@@ -1,4 +1,4 @@
-# RaccoonTheThird
+# Raccoon The Third
 Raccoon The Third is a scalable Discord bot application that I have developed for personal use. This is a public, base version of the application which I use as a base for the bot that works on my Discord server. This project consists of 3 repositories:
 
 This project consists of 3 repositories:
